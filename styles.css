@@ -1,0 +1,294 @@
+/* Base styles */
+@import url("https://fonts.googleapis.com/css2?family=Akshar&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Akshar", sans-serif;
+}
+
+body {
+  background-color: rgb(0, 0, 0);
+}
+
+/* Wheel styles */
+#wheel {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+/* Hub styles */
+#hub {
+  width: 350px;
+  height: 350px;
+  border-radius: 100%;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+
+  color: white;
+  font-size: 100px;
+  font-weight: bold;
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* Spoke styles */
+#spoke-wrapper {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  animation: spin-wheel 14s ease-in-out infinite;
+}
+
+.spoke {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+
+  display: grid;
+  place-items: center;
+
+  animation: spin-spokes 14s ease-in-out infinite,
+    scaler 14s ease-in-out infinite;
+}
+
+.spoke svg {
+  width: 90px;
+}
+
+/* 
+--- TO POSITION STUFF AROUND A CENTER POINT ---
+    x = r * cos(angle)
+    y = r * sin(angle)
+
+    Using a radius of 225 for this cuz looks good
+    6 circles, so each angle increments by 60 deg
+*/
+
+#spoke-1 {
+  background-image: linear-gradient(-44deg, #4a90e2 2%, #35b5ff);
+
+  margin-left: 225px;
+  margin-top: 0px;
+
+  animation-delay: 0s, calc(-2.333333s * 5);
+}
+
+#spoke-2 {
+  background-image: linear-gradient(
+    134deg,
+    rgba(143, 198, 96, 0.18),
+    rgba(86, 155, 148, 0.18)
+  );
+  margin-left: 112px;
+  margin-top: 194px;
+
+  animation-delay: 0s, calc(-2.333333s * 0);
+}
+
+#spoke-3 {
+  background-image: linear-gradient(
+    -70deg,
+    rgba(255, 229, 80, 0.2),
+    rgba(255, 211, 79, 0.2) 32%,
+    rgba(255, 183, 74, 0.2) 60%,
+    rgba(255, 126, 68, 0.2) 97%
+  );
+  margin-left: -112px;
+  margin-top: 194px;
+
+  animation-delay: 0s, calc(-2.333333s * 1);
+}
+
+#spoke-4 {
+  background-image: linear-gradient(
+    -57deg,
+    rgba(201, 135, 229, 0.05),
+    rgba(152, 79, 198, 0.36)
+  );
+  margin-left: -225px;
+  margin-top: 0px;
+
+  animation-delay: 0s, calc(-2.333333s * 2);
+}
+
+#spoke-5 {
+  background-image: linear-gradient(
+    180deg,
+    rgba(76, 198, 215, 0.3),
+    rgba(107, 231, 207, 0.3)
+  );
+  margin-left: -112px;
+  margin-top: -194px;
+
+  animation-delay: 0s, calc(-2.333333s * 3);
+}
+
+#spoke-6 {
+  background: rgba(36, 165, 215, 0.15);
+
+  margin-left: 112px;
+  margin-top: -194px;
+
+  animation-delay: 0s, calc(-2.333333s * 4);
+}
+
+/* animations */
+@keyframes spin-wheel {
+  0% {
+    transform: rotate(0);
+  }
+  5% {
+    transform: rotate(0);
+  }
+
+  16.67% {
+    transform: rotate(60deg);
+  }
+  21.67% {
+    transform: rotate(60deg);
+  }
+
+  33.33% {
+    transform: rotate(120deg);
+  }
+  38.33% {
+    transform: rotate(120deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+  55% {
+    transform: rotate(180deg);
+  }
+
+  66.67% {
+    transform: rotate(240deg);
+  }
+  71.67% {
+    transform: rotate(240deg);
+  }
+
+  83.33% {
+    transform: rotate(300deg);
+  }
+  88.33% {
+    transform: rotate(300deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-spokes {
+  0% {
+    transform: rotate(0);
+  }
+  5% {
+    transform: rotate(0);
+  }
+
+  16.67% {
+    transform: rotate(-60deg);
+  }
+  21.67% {
+    transform: rotate(-60deg);
+  }
+
+  33.33% {
+    transform: rotate(-120deg);
+  }
+  38.33% {
+    transform: rotate(-120deg);
+  }
+
+  50% {
+    transform: rotate(-180deg);
+  }
+  55% {
+    transform: rotate(-180deg);
+  }
+
+  66.67% {
+    transform: rotate(-240deg);
+  }
+  71.67% {
+    transform: rotate(-240deg);
+  }
+
+  83.33% {
+    transform: rotate(-300deg);
+  }
+  88.33% {
+    transform: rotate(-300deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes scaler {
+  0% {
+    scale: 1.15;
+  }
+  5% {
+    scale: 1.15;
+  }
+
+  16.67% {
+    scale: 0.85;
+  }
+  21.67% {
+    scale: 0.85;
+  }
+
+  33.33% {
+    scale: 0.75;
+  }
+  38.33% {
+    scale: 0.75;
+  }
+
+  50% {
+    scale: 0.675;
+  }
+  55% {
+    scale: 0.675;
+  }
+
+  66.67% {
+    scale: 0.75;
+  }
+  71.67% {
+    scale: 0.75;
+  }
+
+  83.33% {
+    scale: 0.85;
+  }
+  88.33% {
+    scale: 0.85;
+  }
+
+  100% {
+    scale: 1.15;
+  }
+}
